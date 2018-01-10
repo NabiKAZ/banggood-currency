@@ -14,9 +14,9 @@
 
 (function() {
     'use strict';
-	
-	var unit = 4600; //THIS IS THE CURRENT PRICE OF THE DOLLAR IN TODAY. REPLACE WITH ARBITRARY VALUE.
-	var currency = 'تومان'; //THIS IS THE CURRENCY NAME. REPLACE WITH ARBITRARY VALUE.
+
+    var unit = 4600; //THIS IS THE CURRENT PRICE OF THE DOLLAR IN TODAY. REPLACE WITH ARBITRARY VALUE.
+    var currency = 'تومان'; //THIS IS THE CURRENCY NAME. REPLACE WITH ARBITRARY VALUE.
 
     var selectors = 'div>.now, li>.price, .selected_total>strong';
 
