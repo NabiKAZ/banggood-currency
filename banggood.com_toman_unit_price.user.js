@@ -1,8 +1,11 @@
 // ==UserScript==
-// @name         Banggood.com toman unit price
-// @namespace    Banggood.com-toman-unit-price
-// @version      0.1
+// @name         Banggood.com currency changer
+// @description  Change currency from USD showed to another currency that does not supported in Banggood.com website
+// @namespace    https://github.com/NabiKAZ/banggood-currency
+// @version      0.2
+// @license      GPL-3.0+; http://www.gnu.org/licenses/gpl-3.0.txt
 // @date         2017-02-20
+// @update       2018
 // @author       Nabi KaramAlizadeh <nabikaz@gmail.com>
 // @homepage     http://www.nabi.ir/
 // @match        *://www.banggood.com/*
@@ -11,17 +14,19 @@
 
 (function() {
     'use strict';
+	
+	var unit = 4600; //THIS IS THE CURRENT PRICE OF THE DOLLAR IN TODAY. REPLACE WITH ARBITRARY VALUE.
+	var currency = 'تومان'; //THIS IS THE CURRENCY NAME. REPLACE WITH ARBITRARY VALUE.
 
     var selectors = 'div>.now, li>.price, .selected_total>strong';
 
     $('body').on('DOMSubtreeModified', selectors, function(){
-        var unit = 4000;
         var price = $(this).text();
         price = price.replace('US$', '');
         price = price * unit;
         price = Math.round(price);
         price = isNaN(price)?'':price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        var priceUnit = price + ' تومان';
+        var priceUnit = price + ' ' + currency;
         var priceTomanEl = $(this).parent().find('.priceToman').first();
         if (priceTomanEl.length === 0) {
             priceTomanEl = $('<div/>');
